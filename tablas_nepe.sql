@@ -28,7 +28,7 @@ create table if not exists nepe.d_anulatransa
     efivir char(1),
     ref0 char(1)
   );
-  create table if not exists nepe.dd_cbconsdia
+  create table if not exists nepe.dd_cbconsdia_
   (
     n_cve_arr smallint,
     n_cve_alr smallint,
@@ -38,7 +38,7 @@ create table if not exists nepe.d_anulatransa
     i_importe money(14,0),
     d_origen char(1)
   );
-  create table if not exists nepe.dd_cbconsdiat
+  create table if not exists nepe.dd_cbconsdiat_
   (
     n_cve_arr smallint,
     n_cve_alr smallint,
@@ -48,7 +48,7 @@ create table if not exists nepe.d_anulatransa
     i_importe money(14,0),
     d_origen char(1)
   );
-  create table if not exists nepe.dd_cbconsmen 
+  create table if not exists nepe.dd_cbconsmen_
   (
     n_cve_arr smallint,
     n_cve_alr smallint,
@@ -58,7 +58,7 @@ create table if not exists nepe.d_anulatransa
     i_importe money(14,0),
     d_origen char(1)
   );
-  create table if not exists nepe.dd_cbconsment
+  create table if not exists nepe.dd_cbconsment_
   (
     n_cve_arr smallint,
     n_cve_alr smallint,
@@ -416,9 +416,9 @@ create table if not exists nepe.d_anulatransa
 
   
 LOAD FROM 'data/nepe/pmov.txt' INSERT INTO nepe.m_pgmovimiento;
-LOAD FROM 'data/nepe/pper.txt' INSERT INTO nepe.d_pgperiodo;
-LOAD FROM 'data/nepe/ptra.txt' INSERT INTO nepe.d_pgtransaccion;
-LOAD FROM 'data/nepe/pinf.txt' INSERT INTO nepe.d_pginformativo;
+LOAD FROM 'data/nepe/pper.txt' INSERT INTO nepe.d_pgperiodop; -- le hace falta la p
+LOAD FROM 'data/nepe/ptra.txt' INSERT INTO nepe.d_pgtransaccionp; -- le hace falta la p
+LOAD FROM 'data/nepe/pinf.txt' INSERT INTO nepe.d_pginformativop; -- le hace falta la p
 LOAD FROM 'data/nepe/ppag.txt' INSERT INTO nepe.d_pgfpagant;
 LOAD FROM 'data/nepe/ppza.txt' INSERT INTO nepe.d_pgplazasucur;
 LOAD FROM 'data/nepe/pcad.txt' INSERT INTO nepe.d_pgocadenas;
@@ -457,4 +457,4 @@ LOAD FROM 'data/nepe/ddec.txt' INSERT INTO nepe.dd_dedetdecimal;
 LOAD FROM 'data/nepe/pfca.txt' INSERT INTO nepe.d_pgfcausacion;
 LOAD FROM 'data/nepe/poes.txt' INSERT INTO nepe.d_pgotrosestimulos;
 LOAD FROM 'data/nepe/pcom.txt' INSERT INTO nepe.d_pgcompensacion;
-LOAD FROM 'data/nepe/pbca.txt' INSERT INTO nepe.d_pgbonoscarbono;
+-- LOAD FROM 'data/nepe/pbca.txt' INSERT INTO nepe.d_pgbonoscarbono;
