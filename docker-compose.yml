@@ -1,12 +1,10 @@
-version: '4.1'
-
 services:
   informix:
     image: icr.io/informix/informix-developer-database
     container_name: ifx_test
     restart: always
     volumes:
-      - C:\Users\HABIDE_5\code\ifx_vol:/opt/ibm/data
+      - .:/opt/ibm/data
     ports:
       - 9088:9088
       - 9089:9089
@@ -15,3 +13,4 @@ services:
       - 27883:27883
     environment:
       - LICENSE=accept
+      - DBSERVERNAME=ifx_lab
