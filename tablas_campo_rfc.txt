@@ -1,0 +1,11 @@
+m_dotdeclarantes
+d_dotdetallerfc
+m_pgmovimiento
+d_cbcontable
+d_correrfc
+d_dereprelegal
+d_derfcdesgloce
+m_dmdeclarantes
+d_dmreplegal
+dd_dmiterrfc
+d_dmdetallerfc
