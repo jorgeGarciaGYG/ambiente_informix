@@ -7,10 +7,10 @@ services:
       - .:/opt/ibm/data
     ports:
       - 9088:9088
-      - 9089:9089
-      - 27017:27017
-      - 27018:27018
-      - 27883:27883
+      # - 9089:9089
+      # - 27017:27017
+      # - 27018:27018
+      # - 27883:27883
     environment:
       - LICENSE=accept
       - DBSERVERNAME=ifx_lab

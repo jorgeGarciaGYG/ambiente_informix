@@ -1,3 +1,5 @@
+-- drop database if exists pagos;
+
 create database if not exists pagos;
 -- create schema nepe;
 
@@ -12,6 +14,7 @@ create table if not exists nepe.d_anulatransa
     c_claveaplicacion smallint not null ,
     d_usuarioanula char(8) not null 
   );
+
   create table if not exists nepe.cat_fp 
   (
     fpag integer,
@@ -413,48 +416,196 @@ create table if not exists nepe.d_anulatransa
     d_apellidopaterno varchar(60),
     d_apellidomaterno varchar(60)
   );
-
+create table if not exists nepe.d_pgbonoscarbono
+  (
+    c_ent_receptora integer not null ,
+    c_llave_det integer not null ,
+    c_numtrans smallint not null ,
+    c_consec smallint not null ,
+    n_cve_con integer not null ,
+    d_valor varchar(50)
+  );
   
-LOAD FROM 'data/nepe/pmov.txt' INSERT INTO nepe.m_pgmovimiento;
-LOAD FROM 'data/nepe/pper.txt' INSERT INTO nepe.d_pgperiodop; -- le hace falta la p
-LOAD FROM 'data/nepe/ptra.txt' INSERT INTO nepe.d_pgtransaccionp; -- le hace falta la p
-LOAD FROM 'data/nepe/pinf.txt' INSERT INTO nepe.d_pginformativop; -- le hace falta la p
-LOAD FROM 'data/nepe/ppag.txt' INSERT INTO nepe.d_pgfpagant;
-LOAD FROM 'data/nepe/ppza.txt' INSERT INTO nepe.d_pgplazasucur;
-LOAD FROM 'data/nepe/pcad.txt' INSERT INTO nepe.d_pgocadenas;
-LOAD FROM 'data/nepe/cbcn.txt' INSERT INTO nepe.d_cbcontable;
-LOAD FROM 'data/nepe/corr.txt' INSERT INTO nepe.d_correccion;
-LOAD FROM 'data/nepe/cper.txt' INSERT INTO nepe.d_correperiodo;
-LOAD FROM 'data/nepe/crfc.txt' INSERT INTO nepe.d_correrfc;
-LOAD FROM 'data/nepe/dper.txt' INSERT INTO nepe.d_deperiodo;
-LOAD FROM 'data/nepe/dpap.txt' INSERT INTO nepe.d_dedatospapel;
-LOAD FROM 'data/nepe/ppap.txt' INSERT INTO nepe.d_pgdatospapel;
-LOAD FROM 'data/nepe/ddom.txt' INSERT INTO nepe.d_dedomfiscal;
-LOAD FROM 'data/nepe/drep.txt' INSERT INTO nepe.d_dereprelegal;
-LOAD FROM 'data/nepe/dinf.txt' INSERT INTO nepe.d_deinformativo;
-LOAD FROM 'data/nepe/ddev.txt' INSERT INTO nepe.d_dedevolucion;
-LOAD FROM 'data/nepe/drfc.txt' INSERT INTO nepe.d_derfcdesgloce;
-LOAD FROM 'data/nepe/dcad.txt' INSERT INTO nepe.d_deocadenas;
-LOAD FROM 'data/nepe/pptu.txt' INSERT INTO nepe.d_pganualptu;
-LOAD FROM 'data/nepe/pdec.txt' INSERT INTO nepe.d_pganualdecla;
-LOAD FROM 'data/nepe/anut.txt' INSERT INTO nepe.d_anulatransa;
-LOAD FROM 'data/nepe/pcre.txt' INSERT INTO nepe.d_pgnumcredito;
-LOAD FROM 'data/nepe/pfed.txt' INSERT INTO nepe.d_pgentidadfed;
-LOAD FROM 'data/nepe/ddsg.txt' INSERT INTO nepe.d_detalledesgloce;
-LOAD FROM 'data/nepe/pdch.txt' INSERT INTO nepe.dd_pgdetchar;
-LOAD FROM 'data/nepe/cbmt.txt' INSERT INTO nepe.dd_cbconsment_;
-LOAD FROM 'data/nepe/cbme.txt' INSERT INTO nepe.dd_cbconsmen_;
-LOAD FROM 'data/nepe/cbda.txt' INSERT INTO nepe.dd_cbconsdia_;
-LOAD FROM 'data/nepe/cbdt.txt' INSERT INTO nepe.dd_cbconsdiat_;
-LOAD FROM 'data/nepe/pcnv.txt' INSERT INTO nepe.m_pgcat_conver;
-LOAD FROM 'data/nepe/dcnv.txt' INSERT INTO nepe.m_decat_conver;
-LOAD FROM 'data/nepe/ccon.txt' INSERT INTO nepe.cat_con;
-LOAD FROM 'data/nepe/cfp_.txt' INSERT INTO nepe.cat_fp;
-LOAD FROM 'data/nepe/dnom.txt' INSERT INTO nepe.dd_nombrepf;
-LOAD FROM 'data/nepe/cnom.txt' INSERT INTO nepe.cs_nombreunico;
-LOAD FROM 'data/nepe/dant.txt' INSERT INTO nepe.dd_deanterior;
-LOAD FROM 'data/nepe/ddec.txt' INSERT INTO nepe.dd_dedetdecimal;
-LOAD FROM 'data/nepe/pfca.txt' INSERT INTO nepe.d_pgfcausacion;
-LOAD FROM 'data/nepe/poes.txt' INSERT INTO nepe.d_pgotrosestimulos;
-LOAD FROM 'data/nepe/pcom.txt' INSERT INTO nepe.d_pgcompensacion;
--- LOAD FROM 'data/nepe/pbca.txt' INSERT INTO nepe.d_pgbonoscarbono;
+-- LOAD FROM 'data_hist/nepe/dic30/pmov.txt' INSERT INTO nepe.m_pgmovimiento;
+-- LOAD FROM 'data_hist/nepe/dic30/pper.txt' INSERT INTO nepe.d_pgperiodop;
+-- LOAD FROM 'data_hist/nepe/dic30/ptra.txt' INSERT INTO nepe.d_pgtransaccionp;
+-- LOAD FROM 'data_hist/nepe/dic30/pinf.txt' INSERT INTO nepe.d_pginformativop;
+-- LOAD FROM 'data_hist/nepe/dic30/ppag.txt' INSERT INTO nepe.d_pgfpagant;
+-- LOAD FROM 'data_hist/nepe/dic30/ppza.txt' INSERT INTO nepe.d_pgplazasucur;
+-- LOAD FROM 'data_hist/nepe/dic30/pcad.txt' INSERT INTO nepe.d_pgocadenas;
+-- LOAD FROM 'data_hist/nepe/dic30/cbcn.txt' INSERT INTO nepe.d_cbcontable;
+-- LOAD FROM 'data_hist/nepe/dic30/corr.txt' INSERT INTO nepe.d_correccion;
+-- LOAD FROM 'data_hist/nepe/dic30/cper.txt' INSERT INTO nepe.d_correperiodo;
+-- LOAD FROM 'data_hist/nepe/dic30/crfc.txt' INSERT INTO nepe.d_correrfc;
+-- LOAD FROM 'data_hist/nepe/dic30/dper.txt' INSERT INTO nepe.d_deperiodo;
+-- LOAD FROM 'data_hist/nepe/dic30/dpap.txt' INSERT INTO nepe.d_dedatospapel;
+-- LOAD FROM 'data_hist/nepe/dic30/ppap.txt' INSERT INTO nepe.d_pgdatospapel;
+-- LOAD FROM 'data_hist/nepe/dic30/ddom.txt' INSERT INTO nepe.d_dedomfiscal;
+-- LOAD FROM 'data_hist/nepe/dic30/drep.txt' INSERT INTO nepe.d_dereprelegal;
+-- LOAD FROM 'data_hist/nepe/dic30/dinf.txt' INSERT INTO nepe.d_deinformativo;
+-- LOAD FROM 'data_hist/nepe/dic30/ddev.txt' INSERT INTO nepe.d_dedevolucion;
+-- LOAD FROM 'data_hist/nepe/dic30/drfc.txt' INSERT INTO nepe.d_derfcdesgloce;
+-- LOAD FROM 'data_hist/nepe/dic30/dcad.txt' INSERT INTO nepe.d_deocadenas;
+-- LOAD FROM 'data_hist/nepe/dic30/pptu.txt' INSERT INTO nepe.d_pganualptu;
+-- LOAD FROM 'data_hist/nepe/dic30/pdec.txt' INSERT INTO nepe.d_pganualdecla;
+-- LOAD FROM 'data_hist/nepe/dic30/anut.txt' INSERT INTO nepe.d_anulatransa;
+-- LOAD FROM 'data_hist/nepe/dic30/pcre.txt' INSERT INTO nepe.d_pgnumcredito;
+-- LOAD FROM 'data_hist/nepe/dic30/pfed.txt' INSERT INTO nepe.d_pgentidadfed;
+-- LOAD FROM 'data_hist/nepe/dic30/ddsg.txt' INSERT INTO nepe.d_detalledesgloce;
+-- LOAD FROM 'data_hist/nepe/dic30/pdch.txt' INSERT INTO nepe.dd_pgdetchar;
+-- LOAD FROM 'data_hist/nepe/dic30/cbmt.txt' INSERT INTO nepe.dd_cbconsment_;
+-- LOAD FROM 'data_hist/nepe/dic30/cbme.txt' INSERT INTO nepe.dd_cbconsmen_;
+-- LOAD FROM 'data_hist/nepe/dic30/cbda.txt' INSERT INTO nepe.dd_cbconsdia_;
+-- LOAD FROM 'data_hist/nepe/dic30/cbdt.txt' INSERT INTO nepe.dd_cbconsdiat_;
+-- LOAD FROM 'data_hist/nepe/dic30/pcnv.txt' INSERT INTO nepe.m_pgcat_conver;
+-- LOAD FROM 'data_hist/nepe/dic30/dcnv.txt' INSERT INTO nepe.m_decat_conver;
+-- LOAD FROM 'data_hist/nepe/dic30/ccon.txt' INSERT INTO nepe.cat_con;
+-- LOAD FROM 'data_hist/nepe/dic30/cfp_.txt' INSERT INTO nepe.cat_fp;
+-- LOAD FROM 'data_hist/nepe/dic30/dnom.txt' INSERT INTO nepe.dd_nombrepf;
+-- LOAD FROM 'data_hist/nepe/dic30/cnom.txt' INSERT INTO nepe.cs_nombreunico;
+-- LOAD FROM 'data_hist/nepe/dic30/dant.txt' INSERT INTO nepe.dd_deanterior;
+-- LOAD FROM 'data_hist/nepe/dic30/ddec.txt' INSERT INTO nepe.dd_dedetdecimal;
+-- LOAD FROM 'data_hist/nepe/dic30/pfca.txt' INSERT INTO nepe.d_pgfcausacion;
+-- LOAD FROM 'data_hist/nepe/dic30/poes.txt' INSERT INTO nepe.d_pgotrosestimulos;
+-- LOAD FROM 'data_hist/nepe/dic30/pcom.txt' INSERT INTO nepe.d_pgcompensacion;
+-- LOAD FROM 'data_hist/nepe/dic30/pbca.txt' INSERT INTO nepe.d_pgbonoscarbono;
+
+
+-- LOAD FROM 'data_hist/nepe/dic31/pmov.txt' INSERT INTO nepe.m_pgmovimiento;
+-- LOAD FROM 'data_hist/nepe/dic31/pper.txt' INSERT INTO nepe.d_pgperiodop;
+-- LOAD FROM 'data_hist/nepe/dic31/ptra.txt' INSERT INTO nepe.d_pgtransaccionp;
+-- LOAD FROM 'data_hist/nepe/dic31/pinf.txt' INSERT INTO nepe.d_pginformativop;
+-- LOAD FROM 'data_hist/nepe/dic31/ppag.txt' INSERT INTO nepe.d_pgfpagant;
+-- LOAD FROM 'data_hist/nepe/dic31/ppza.txt' INSERT INTO nepe.d_pgplazasucur;
+-- LOAD FROM 'data_hist/nepe/dic31/pcad.txt' INSERT INTO nepe.d_pgocadenas;
+-- LOAD FROM 'data_hist/nepe/dic31/cbcn.txt' INSERT INTO nepe.d_cbcontable;
+-- LOAD FROM 'data_hist/nepe/dic31/corr.txt' INSERT INTO nepe.d_correccion;
+-- LOAD FROM 'data_hist/nepe/dic31/cper.txt' INSERT INTO nepe.d_correperiodo;
+-- LOAD FROM 'data_hist/nepe/dic31/crfc.txt' INSERT INTO nepe.d_correrfc;
+-- LOAD FROM 'data_hist/nepe/dic31/dper.txt' INSERT INTO nepe.d_deperiodo;
+-- LOAD FROM 'data_hist/nepe/dic31/dpap.txt' INSERT INTO nepe.d_dedatospapel;
+-- LOAD FROM 'data_hist/nepe/dic31/ppap.txt' INSERT INTO nepe.d_pgdatospapel;
+-- LOAD FROM 'data_hist/nepe/dic31/ddom.txt' INSERT INTO nepe.d_dedomfiscal;
+-- LOAD FROM 'data_hist/nepe/dic31/drep.txt' INSERT INTO nepe.d_dereprelegal;
+-- LOAD FROM 'data_hist/nepe/dic31/dinf.txt' INSERT INTO nepe.d_deinformativo;
+-- LOAD FROM 'data_hist/nepe/dic31/ddev.txt' INSERT INTO nepe.d_dedevolucion;
+-- LOAD FROM 'data_hist/nepe/dic31/drfc.txt' INSERT INTO nepe.d_derfcdesgloce;
+-- LOAD FROM 'data_hist/nepe/dic31/dcad.txt' INSERT INTO nepe.d_deocadenas;
+-- LOAD FROM 'data_hist/nepe/dic31/pptu.txt' INSERT INTO nepe.d_pganualptu;
+-- LOAD FROM 'data_hist/nepe/dic31/pdec.txt' INSERT INTO nepe.d_pganualdecla;
+-- LOAD FROM 'data_hist/nepe/dic31/anut.txt' INSERT INTO nepe.d_anulatransa;
+-- LOAD FROM 'data_hist/nepe/dic31/pcre.txt' INSERT INTO nepe.d_pgnumcredito;
+-- LOAD FROM 'data_hist/nepe/dic31/pfed.txt' INSERT INTO nepe.d_pgentidadfed;
+-- LOAD FROM 'data_hist/nepe/dic31/ddsg.txt' INSERT INTO nepe.d_detalledesgloce;
+-- LOAD FROM 'data_hist/nepe/dic31/pdch.txt' INSERT INTO nepe.dd_pgdetchar;
+-- LOAD FROM 'data_hist/nepe/dic31/cbmt.txt' INSERT INTO nepe.dd_cbconsment_;
+-- LOAD FROM 'data_hist/nepe/dic31/cbme.txt' INSERT INTO nepe.dd_cbconsmen_;
+-- LOAD FROM 'data_hist/nepe/dic31/cbda.txt' INSERT INTO nepe.dd_cbconsdia_;
+-- LOAD FROM 'data_hist/nepe/dic31/cbdt.txt' INSERT INTO nepe.dd_cbconsdiat_;
+-- LOAD FROM 'data_hist/nepe/dic31/pcnv.txt' INSERT INTO nepe.m_pgcat_conver;
+-- TRUNCATE TABLE nepe.m_decat_conver;
+-- LOAD FROM 'data_hist/nepe/dic31/dcnv.txt' INSERT INTO nepe.m_decat_conver;
+-- LOAD FROM 'data_hist/nepe/dic31/ccon.txt' INSERT INTO nepe.cat_con;
+-- LOAD FROM 'data_hist/nepe/dic31/cfp_.txt' INSERT INTO nepe.cat_fp;
+-- LOAD FROM 'data_hist/nepe/dic31/dnom.txt' INSERT INTO nepe.dd_nombrepf;
+-- TRUNCATE TABLE nepe.cs_nombreunico;
+-- LOAD FROM 'data_hist/nepe/dic31/cnom.txt' INSERT INTO nepe.cs_nombreunico;
+-- LOAD FROM 'data_hist/nepe/dic31/dant.txt' INSERT INTO nepe.dd_deanterior;
+-- LOAD FROM 'data_hist/nepe/dic31/ddec.txt' INSERT INTO nepe.dd_dedetdecimal;
+-- LOAD FROM 'data_hist/nepe/dic31/pfca.txt' INSERT INTO nepe.d_pgfcausacion;
+-- LOAD FROM 'data_hist/nepe/dic31/poes.txt' INSERT INTO nepe.d_pgotrosestimulos;
+-- LOAD FROM 'data_hist/nepe/dic31/pcom.txt' INSERT INTO nepe.d_pgcompensacion;
+-- LOAD FROM 'data_hist/nepe/dic31/pbca.txt' INSERT INTO nepe.d_pgbonoscarbono;
+
+-- LOAD FROM 'data_hist/nepe/ene01/pmov.txt' INSERT INTO nepe.m_pgmovimiento;
+-- LOAD FROM 'data_hist/nepe/ene01/pper.txt' INSERT INTO nepe.d_pgperiodop;
+-- LOAD FROM 'data_hist/nepe/ene01/ptra.txt' INSERT INTO nepe.d_pgtransaccionp;
+-- LOAD FROM 'data_hist/nepe/ene01/pinf.txt' INSERT INTO nepe.d_pginformativop;
+-- LOAD FROM 'data_hist/nepe/ene01/ppag.txt' INSERT INTO nepe.d_pgfpagant;
+-- LOAD FROM 'data_hist/nepe/ene01/ppza.txt' INSERT INTO nepe.d_pgplazasucur;
+-- LOAD FROM 'data_hist/nepe/ene01/pcad.txt' INSERT INTO nepe.d_pgocadenas;
+-- LOAD FROM 'data_hist/nepe/ene01/cbcn.txt' INSERT INTO nepe.d_cbcontable;
+-- LOAD FROM 'data_hist/nepe/ene01/corr.txt' INSERT INTO nepe.d_correccion;
+-- LOAD FROM 'data_hist/nepe/ene01/cper.txt' INSERT INTO nepe.d_correperiodo;
+-- LOAD FROM 'data_hist/nepe/ene01/crfc.txt' INSERT INTO nepe.d_correrfc;
+-- LOAD FROM 'data_hist/nepe/ene01/dper.txt' INSERT INTO nepe.d_deperiodo;
+-- LOAD FROM 'data_hist/nepe/ene01/dpap.txt' INSERT INTO nepe.d_dedatospapel;
+-- LOAD FROM 'data_hist/nepe/ene01/ppap.txt' INSERT INTO nepe.d_pgdatospapel;
+-- LOAD FROM 'data_hist/nepe/ene01/ddom.txt' INSERT INTO nepe.d_dedomfiscal;
+-- LOAD FROM 'data_hist/nepe/ene01/drep.txt' INSERT INTO nepe.d_dereprelegal;
+-- LOAD FROM 'data_hist/nepe/ene01/dinf.txt' INSERT INTO nepe.d_deinformativo;
+-- LOAD FROM 'data_hist/nepe/ene01/ddev.txt' INSERT INTO nepe.d_dedevolucion;
+-- LOAD FROM 'data_hist/nepe/ene01/drfc.txt' INSERT INTO nepe.d_derfcdesgloce;
+-- LOAD FROM 'data_hist/nepe/ene01/dcad.txt' INSERT INTO nepe.d_deocadenas;
+-- LOAD FROM 'data_hist/nepe/ene01/pptu.txt' INSERT INTO nepe.d_pganualptu;
+-- LOAD FROM 'data_hist/nepe/ene01/pdec.txt' INSERT INTO nepe.d_pganualdecla;
+-- LOAD FROM 'data_hist/nepe/ene01/anut.txt' INSERT INTO nepe.d_anulatransa;
+-- LOAD FROM 'data_hist/nepe/ene01/pcre.txt' INSERT INTO nepe.d_pgnumcredito;
+-- LOAD FROM 'data_hist/nepe/ene01/pfed.txt' INSERT INTO nepe.d_pgentidadfed;
+-- LOAD FROM 'data_hist/nepe/ene01/ddsg.txt' INSERT INTO nepe.d_detalledesgloce;
+-- LOAD FROM 'data_hist/nepe/ene01/pdch.txt' INSERT INTO nepe.dd_pgdetchar;
+-- LOAD FROM 'data_hist/nepe/ene01/cbmt.txt' INSERT INTO nepe.dd_cbconsment_;
+-- LOAD FROM 'data_hist/nepe/ene01/cbme.txt' INSERT INTO nepe.dd_cbconsmen_;
+-- LOAD FROM 'data_hist/nepe/ene01/cbda.txt' INSERT INTO nepe.dd_cbconsdia_;
+-- LOAD FROM 'data_hist/nepe/ene01/cbdt.txt' INSERT INTO nepe.dd_cbconsdiat_;
+-- LOAD FROM 'data_hist/nepe/ene01/pcnv.txt' INSERT INTO nepe.m_pgcat_conver;
+-- TRUNCATE TABLE nepe.m_decat_conver;
+-- LOAD FROM 'data_hist/nepe/ene01/dcnv.txt' INSERT INTO nepe.m_decat_conver;
+-- LOAD FROM 'data_hist/nepe/ene01/ccon.txt' INSERT INTO nepe.cat_con;
+-- LOAD FROM 'data_hist/nepe/ene01/cfp_.txt' INSERT INTO nepe.cat_fp;
+-- LOAD FROM 'data_hist/nepe/ene01/dnom.txt' INSERT INTO nepe.dd_nombrepf;
+-- TRUNCATE TABLE nepe.cs_nombreunico;
+-- LOAD FROM 'data_hist/nepe/ene01/cnom.txt' INSERT INTO nepe.cs_nombreunico;
+-- LOAD FROM 'data_hist/nepe/ene01/dant.txt' INSERT INTO nepe.dd_deanterior;
+-- LOAD FROM 'data_hist/nepe/ene01/ddec.txt' INSERT INTO nepe.dd_dedetdecimal;
+-- LOAD FROM 'data_hist/nepe/ene01/pfca.txt' INSERT INTO nepe.d_pgfcausacion;
+-- LOAD FROM 'data_hist/nepe/ene01/poes.txt' INSERT INTO nepe.d_pgotrosestimulos;
+-- LOAD FROM 'data_hist/nepe/ene01/pcom.txt' INSERT INTO nepe.d_pgcompensacion;
+-- LOAD FROM 'data_hist/nepe/ene01/pbca.txt' INSERT INTO nepe.d_pgbonoscarbono;
+
+-- LOAD FROM 'data_hist/nepe/ene02/pmov.txt' INSERT INTO nepe.m_pgmovimiento;
+-- LOAD FROM 'data_hist/nepe/ene02/pper.txt' INSERT INTO nepe.d_pgperiodop;
+-- LOAD FROM 'data_hist/nepe/ene02/ptra.txt' INSERT INTO nepe.d_pgtransaccionp;
+-- LOAD FROM 'data_hist/nepe/ene02/pinf.txt' INSERT INTO nepe.d_pginformativop;
+-- LOAD FROM 'data_hist/nepe/ene02/ppag.txt' INSERT INTO nepe.d_pgfpagant;
+-- LOAD FROM 'data_hist/nepe/ene02/ppza.txt' INSERT INTO nepe.d_pgplazasucur;
+-- LOAD FROM 'data_hist/nepe/ene02/pcad.txt' INSERT INTO nepe.d_pgocadenas;
+-- LOAD FROM 'data_hist/nepe/ene02/cbcn.txt' INSERT INTO nepe.d_cbcontable;
+-- LOAD FROM 'data_hist/nepe/ene02/corr.txt' INSERT INTO nepe.d_correccion;
+-- LOAD FROM 'data_hist/nepe/ene02/cper.txt' INSERT INTO nepe.d_correperiodo;
+-- LOAD FROM 'data_hist/nepe/ene02/crfc.txt' INSERT INTO nepe.d_correrfc;
+-- LOAD FROM 'data_hist/nepe/ene02/dper.txt' INSERT INTO nepe.d_deperiodo;
+-- LOAD FROM 'data_hist/nepe/ene02/dpap.txt' INSERT INTO nepe.d_dedatospapel;
+-- LOAD FROM 'data_hist/nepe/ene02/ppap.txt' INSERT INTO nepe.d_pgdatospapel;
+-- LOAD FROM 'data_hist/nepe/ene02/ddom.txt' INSERT INTO nepe.d_dedomfiscal;
+-- LOAD FROM 'data_hist/nepe/ene02/drep.txt' INSERT INTO nepe.d_dereprelegal;
+-- LOAD FROM 'data_hist/nepe/ene02/dinf.txt' INSERT INTO nepe.d_deinformativo;
+-- LOAD FROM 'data_hist/nepe/ene02/ddev.txt' INSERT INTO nepe.d_dedevolucion;
+-- LOAD FROM 'data_hist/nepe/ene02/drfc.txt' INSERT INTO nepe.d_derfcdesgloce;
+-- LOAD FROM 'data_hist/nepe/ene02/dcad.txt' INSERT INTO nepe.d_deocadenas;
+-- LOAD FROM 'data_hist/nepe/ene02/pptu.txt' INSERT INTO nepe.d_pganualptu;
+-- LOAD FROM 'data_hist/nepe/ene02/pdec.txt' INSERT INTO nepe.d_pganualdecla;
+-- LOAD FROM 'data_hist/nepe/ene02/anut.txt' INSERT INTO nepe.d_anulatransa;
+-- LOAD FROM 'data_hist/nepe/ene02/pcre.txt' INSERT INTO nepe.d_pgnumcredito;
+-- LOAD FROM 'data_hist/nepe/ene02/pfed.txt' INSERT INTO nepe.d_pgentidadfed;
+-- LOAD FROM 'data_hist/nepe/ene02/ddsg.txt' INSERT INTO nepe.d_detalledesgloce;
+-- LOAD FROM 'data_hist/nepe/ene02/pdch.txt' INSERT INTO nepe.dd_pgdetchar;
+-- LOAD FROM 'data_hist/nepe/ene02/cbmt.txt' INSERT INTO nepe.dd_cbconsment_;
+-- LOAD FROM 'data_hist/nepe/ene02/cbme.txt' INSERT INTO nepe.dd_cbconsmen_;
+-- LOAD FROM 'data_hist/nepe/ene02/cbda.txt' INSERT INTO nepe.dd_cbconsdia_;
+-- LOAD FROM 'data_hist/nepe/ene02/cbdt.txt' INSERT INTO nepe.dd_cbconsdiat_;
+-- LOAD FROM 'data_hist/nepe/ene02/pcnv.txt' INSERT INTO nepe.m_pgcat_conver;
+-- TRUNCATE TABLE nepe.m_decat_conver;
+-- LOAD FROM 'data_hist/nepe/ene02/dcnv.txt' INSERT INTO nepe.m_decat_conver;
+-- LOAD FROM 'data_hist/nepe/ene02/ccon.txt' INSERT INTO nepe.cat_con;
+-- LOAD FROM 'data_hist/nepe/ene02/cfp_.txt' INSERT INTO nepe.cat_fp;
+-- LOAD FROM 'data_hist/nepe/ene02/dnom.txt' INSERT INTO nepe.dd_nombrepf;
+-- TRUNCATE TABLE nepe.cs_nombreunico;
+-- LOAD FROM 'data_hist/nepe/ene02/cnom.txt' INSERT INTO nepe.cs_nombreunico;
+-- LOAD FROM 'data_hist/nepe/ene02/dant.txt' INSERT INTO nepe.dd_deanterior;
+-- LOAD FROM 'data_hist/nepe/ene02/ddec.txt' INSERT INTO nepe.dd_dedetdecimal;
+-- LOAD FROM 'data_hist/nepe/ene02/pfca.txt' INSERT INTO nepe.d_pgfcausacion; -- SEGUN HAY UN ERROR AQUI
+-- LOAD FROM 'data_hist/nepe/ene02/poes.txt' INSERT INTO nepe.d_pgotrosestimulos;
+-- LOAD FROM 'data_hist/nepe/ene02/pcom.txt' INSERT INTO nepe.d_pgcompensacion;
+-- LOAD FROM 'data_hist/nepe/ene02/pbca.txt' INSERT INTO nepe.d_pgbonoscarbono;
+

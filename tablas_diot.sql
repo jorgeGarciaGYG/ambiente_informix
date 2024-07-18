@@ -141,16 +141,59 @@ create table if not exists diot.m_dotdeclarantes
   );
 
 
-LOAD FROM 'data/diot/odecla.txt' INSERT INTO diot.m_dotdeclarantes;
-LOAD FROM 'data/diot/odetal.txt' INSERT INTO diot.d_dotdetalle;
-LOAD FROM 'data/diot/odetex.txt' INSERT INTO diot.d_dotdetalleext;
-LOAD FROM 'data/diot/odetrf.txt' INSERT INTO diot.d_dotdetallerfc;
-LOAD FROM 'data/diot/odetec.txt' INSERT INTO diot.d_dotdetentcorto;
-LOAD FROM 'data/diot/odetim.txt' INSERT INTO diot.d_dotdetimporte;
-LOAD FROM 'data/diot/ogener.txt' INSERT INTO diot.d_dotgeneral;
-LOAD FROM 'data/diot/ogrlim.txt' INSERT INTO diot.d_dotgralimporte;
-LOAD FROM 'data/diot/operio.txt' INSERT INTO diot.d_dotperiodo;
-LOAD FROM 'data/diot/ofisic.txt' INSERT INTO diot.d_dotpfisica;
-LOAD FROM 'data/diot/omoral.txt' INSERT INTO diot.d_dotpmoral;
-LOAD FROM 'data/diot/osumac.txt' INSERT INTO diot.d_dotsumacomp;
-LOAD FROM 'data/diot/osumar.txt' INSERT INTO diot.d_dotsumarios;
+-- LOAD FROM 'data/diot/odecla.txt' INSERT INTO diot.m_dotdeclarantes;
+-- LOAD FROM 'data/diot/odetal.txt' INSERT INTO diot.d_dotdetalle;
+-- LOAD FROM 'data/diot/odetex.txt' INSERT INTO diot.d_dotdetalleext;
+-- LOAD FROM 'data/diot/odetrf.txt' INSERT INTO diot.d_dotdetallerfc;
+-- LOAD FROM 'data/diot/odetec.txt' INSERT INTO diot.d_dotdetentcorto;
+-- LOAD FROM 'data/diot/odetim.txt' INSERT INTO diot.d_dotdetimporte;
+-- LOAD FROM 'data/diot/ogener.txt' INSERT INTO diot.d_dotgeneral;
+-- LOAD FROM 'data/diot/ogrlim.txt' INSERT INTO diot.d_dotgralimporte;
+-- LOAD FROM 'data/diot/operio.txt' INSERT INTO diot.d_dotperiodo;
+-- LOAD FROM 'data/diot/ofisic.txt' INSERT INTO diot.d_dotpfisica;
+-- LOAD FROM 'data/diot/omoral.txt' INSERT INTO diot.d_dotpmoral;
+-- LOAD FROM 'data/diot/osumac.txt' INSERT INTO diot.d_dotsumacomp;
+-- LOAD FROM 'data/diot/osumar.txt' INSERT INTO diot.d_dotsumarios;
+
+
+LOAD FROM 'data_hist/diot/dic31/odecla.txt' INSERT INTO diot.m_dotdeclarantes;
+LOAD FROM 'data_hist/diot/dic31/odetal.txt' INSERT INTO diot.d_dotdetalle;
+LOAD FROM 'data_hist/diot/dic31/odetex.txt' INSERT INTO diot.d_dotdetalleext;
+LOAD FROM 'data_hist/diot/dic31/odetrf.txt' INSERT INTO diot.d_dotdetallerfc;
+LOAD FROM 'data_hist/diot/dic31/odetec.txt' INSERT INTO diot.d_dotdetentcorto;
+LOAD FROM 'data_hist/diot/dic31/odetim.txt' INSERT INTO diot.d_dotdetimporte;
+LOAD FROM 'data_hist/diot/dic31/ogener.txt' INSERT INTO diot.d_dotgeneral;
+LOAD FROM 'data_hist/diot/dic31/ogrlim.txt' INSERT INTO diot.d_dotgralimporte;
+LOAD FROM 'data_hist/diot/dic31/operio.txt' INSERT INTO diot.d_dotperiodo;
+LOAD FROM 'data_hist/diot/dic31/ofisic.txt' INSERT INTO diot.d_dotpfisica;
+LOAD FROM 'data_hist/diot/dic31/omoral.txt' INSERT INTO diot.d_dotpmoral;
+LOAD FROM 'data_hist/diot/dic31/osumac.txt' INSERT INTO diot.d_dotsumacomp;
+LOAD FROM 'data_hist/diot/dic31/osumar.txt' INSERT INTO diot.d_dotsumarios;
+
+LOAD FROM 'data_hist/diot/ene01/odecla.txt' INSERT INTO diot.m_dotdeclarantes;
+LOAD FROM 'data_hist/diot/ene01/odetal.txt' INSERT INTO diot.d_dotdetalle;
+LOAD FROM 'data_hist/diot/ene01/odetex.txt' INSERT INTO diot.d_dotdetalleext;
+LOAD FROM 'data_hist/diot/ene01/odetrf.txt' INSERT INTO diot.d_dotdetallerfc;
+LOAD FROM 'data_hist/diot/ene01/odetec.txt' INSERT INTO diot.d_dotdetentcorto;
+LOAD FROM 'data_hist/diot/ene01/odetim.txt' INSERT INTO diot.d_dotdetimporte;
+LOAD FROM 'data_hist/diot/ene01/ogener.txt' INSERT INTO diot.d_dotgeneral;
+LOAD FROM 'data_hist/diot/ene01/ogrlim.txt' INSERT INTO diot.d_dotgralimporte;
+LOAD FROM 'data_hist/diot/ene01/operio.txt' INSERT INTO diot.d_dotperiodo;
+LOAD FROM 'data_hist/diot/ene01/ofisic.txt' INSERT INTO diot.d_dotpfisica;
+LOAD FROM 'data_hist/diot/ene01/omoral.txt' INSERT INTO diot.d_dotpmoral;
+LOAD FROM 'data_hist/diot/ene01/osumac.txt' INSERT INTO diot.d_dotsumacomp;
+LOAD FROM 'data_hist/diot/ene01/osumar.txt' INSERT INTO diot.d_dotsumarios;
+
+LOAD FROM 'data_hist/diot/ene02/odecla.txt' INSERT INTO diot.m_dotdeclarantes;
+LOAD FROM 'data_hist/diot/ene02/odetal.txt' INSERT INTO diot.d_dotdetalle;
+LOAD FROM 'data_hist/diot/ene02/odetex.txt' INSERT INTO diot.d_dotdetalleext;
+LOAD FROM 'data_hist/diot/ene02/odetrf.txt' INSERT INTO diot.d_dotdetallerfc;
+LOAD FROM 'data_hist/diot/ene02/odetec.txt' INSERT INTO diot.d_dotdetentcorto;
+LOAD FROM 'data_hist/diot/ene02/odetim.txt' INSERT INTO diot.d_dotdetimporte;
+LOAD FROM 'data_hist/diot/ene02/ogener.txt' INSERT INTO diot.d_dotgeneral;
+LOAD FROM 'data_hist/diot/ene02/ogrlim.txt' INSERT INTO diot.d_dotgralimporte;
+LOAD FROM 'data_hist/diot/ene02/operio.txt' INSERT INTO diot.d_dotperiodo;
+LOAD FROM 'data_hist/diot/ene02/ofisic.txt' INSERT INTO diot.d_dotpfisica;
+LOAD FROM 'data_hist/diot/ene02/omoral.txt' INSERT INTO diot.d_dotpmoral;
+LOAD FROM 'data_hist/diot/ene02/osumac.txt' INSERT INTO diot.d_dotsumacomp;
+LOAD FROM 'data_hist/diot/ene02/osumar.txt' INSERT INTO diot.d_dotsumarios;
